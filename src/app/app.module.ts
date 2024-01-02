@@ -7,13 +7,15 @@ import { DiscoverRestaurantsComponent } from './discover-restaurants/discover-re
 import { FindRestaurantsComponent } from './discover-restaurants/find-restaurants/find-restaurants.component';
 import { MyOrdersComponent } from './discover-restaurants/my-orders/my-orders.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RestaurantDetailComponent } from './discover-restaurants/find-restaurants/restaurant-detail/restaurant-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DiscoverRestaurantsComponent,
     FindRestaurantsComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    RestaurantDetailComponent
   ],
   imports: [
     BrowserModule,

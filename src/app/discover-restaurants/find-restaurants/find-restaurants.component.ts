@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DiscoverRestaurantsService } from 'src/app/shared/discover-restaurants.service';
 
 @Component({
   selector: 'app-find-restaurants',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class FindRestaurantsComponent {
 
+  constructor(public service : DiscoverRestaurantsService) { }
+
+  ngOnInit(): void {
+    this.service.refreshList(); // pass in the radius, how to get from user? think two way binding and mat. design slider
+  }
 }
