@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DiscoverRestaurantsService {
 
-  url:string = environment.apiBaseUrl+'/Restaurant/100000'; // stand-in radius
+  url:string = environment.apiBaseUrl+'/Restaurant/10000'; // stand-in radius
 
   constructor(private http: HttpClient) { }
 
