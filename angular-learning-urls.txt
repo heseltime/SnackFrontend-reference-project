@@ -1,0 +1,8 @@
+https://angular.dev/tutorials/learn-angular
+https://www.youtube.com/watch?v=xAT0lHYhHMY&list=PL1w1q3fL4pmj9k1FrJ3Pe91EPub2_h4jF&index=2
+
+https://material.angular.io/
+
+https://angular.io/start/start-deployment
+https://angular.io/guide/router
+https://angular.io/cli
