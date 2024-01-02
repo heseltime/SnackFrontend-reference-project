@@ -2,7 +2,7 @@ src
 |-- app
 |  |-- discover-restaurants, ...
 |  |  |-- find-restaurants
-|  |  |-- profile (customer)
+|  |  |-- my-orders
 |  |-- manage-restaurant
 |  |  |-- incoming orders
 |  |  |-- profile (restaurant) with menu upload

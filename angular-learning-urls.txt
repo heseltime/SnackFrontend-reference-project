@@ -6,3 +6,6 @@ https://material.angular.io/
 https://angular.io/start/start-deployment
 https://angular.io/guide/router
 https://angular.io/cli
+
+following this tutorial in setup:
+https://www.youtube.com/watch?v=OZGdKYzUYvU
