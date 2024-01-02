@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DiscoverRestaurantsService } from '../shared/discover-restaurants.service';
 
 @Component({
   selector: 'app-discover-restaurants',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./discover-restaurants.component.css']
 })
 export class DiscoverRestaurantsComponent {
+
+  constructor(public service : DiscoverRestaurantsService) { }
+
+  ngOnInit(): void {
+    this.service.refreshList();
+  }
 
 }
