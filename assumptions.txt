@@ -1,0 +1,2 @@
+- one single student, already logged in, central order management (student perspective)
+- also only orders per session stored: session storage for this, most likely (alt. all orders in DB)

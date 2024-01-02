@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DiscoverRestaurantsComponent } from './discover-restaurants/discover-restaurants.component';
 import { FindRestaurantsComponent } from './discover-restaurants/find-restaurants/find-restaurants.component';
 import { MyOrdersComponent } from './discover-restaurants/my-orders/my-orders.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MyOrdersComponent } from './discover-restaurants/my-orders/my-orders.co
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

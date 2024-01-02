@@ -6,5 +6,9 @@ src
 |  |-- manage-restaurant
 |  |  |-- incoming orders
 |  |  |-- profile (restaurant) with menu upload
+|  |-- shared
+|  |  |-- discover-restaurants.service.ts
+|  |  |-- discover-restaurants.model.ts?
+|  |-- app.module.ts
 |-- styles.css
 |-- index.html
