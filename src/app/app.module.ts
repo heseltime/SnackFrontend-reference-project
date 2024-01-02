@@ -8,6 +8,7 @@ import { FindRestaurantsComponent } from './discover-restaurants/find-restaurant
 import { MyOrdersComponent } from './discover-restaurants/my-orders/my-orders.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RestaurantDetailComponent } from './discover-restaurants/find-restaurants/restaurant-detail/restaurant-detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { RestaurantDetailComponent } from './discover-restaurants/find-restauran
     DiscoverRestaurantsComponent,
     FindRestaurantsComponent,
     MyOrdersComponent,
-    RestaurantDetailComponent
+    RestaurantDetailComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
