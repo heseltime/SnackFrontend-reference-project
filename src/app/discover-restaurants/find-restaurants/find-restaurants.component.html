@@ -1,6 +1,6 @@
 <div class="col-12 ml-3">
     <h3 class="text-success">In Your Area</h3>
-    <ul class="list-group">
+    <ul class="list-group" *ngIf="service.restaurantList.length>0; else elseBlock">
         <li class="list-group-item d-flex justfiy-content-between align-items-start mb-2 border px-4 py-3 rounded-3" *ngFor="let restaurant of service.restaurantList">
             <a [routerLink]="restaurant.id.toString()">
                 <div class="flex-grow-1 mouse-hover">
@@ -14,3 +14,9 @@
         </li>
     </ul>
 </div>
+
+<ng-template #elseBlock>
+    <div class="alert alert-info">
+        <i class="fa-solid fa-info-circle fa-lg"></i> Currently no restaurants available in your area
+    </div>
+</ng-template>

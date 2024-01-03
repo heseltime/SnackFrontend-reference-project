@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DiscoverUsers } from '../shared/discover-users.model';
 
 @Component({
   selector: 'app-discover-restaurants',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./discover-restaurants.component.css']
 })
 export class DiscoverRestaurantsComponent {
-
+  user:DiscoverUsers = new DiscoverUsers(1, 'john_doe', '', ''); // example user
 }

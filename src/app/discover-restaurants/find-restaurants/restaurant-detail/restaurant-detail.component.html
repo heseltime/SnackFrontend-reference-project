@@ -19,8 +19,8 @@
                     <h5 class="card-title">{{ menu.itemName }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ menu.category }}</h6>
                     <p class="card-text">{{ menu.description }}</p>
-                    <button (click)="addToOrder(menu)" class="btn btn-primary mt-2 mr-1 btn-margin-right"><i class="fa-solid fa-plus fa-lg mouse-hover"></i> Add to Order</button>
-                    <button (click)="removeFromOrder(menu)" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Remove</button>
+                    <button (click)="addToOrder(menu)" [disabled]="!restaurant.deliveryCondition?.deliveryCost" class="btn btn-primary mt-2 mr-1 btn-margin-right"><i class="fa-solid fa-plus fa-lg mouse-hover"></i> Add to Order</button>
+                    <button (click)="removeFromOrder(menu)" [disabled]="!restaurant.deliveryCondition?.deliveryCost" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Remove</button>
                 </div>
             </div>
         </div>
@@ -38,13 +38,14 @@
                     </div>
                 </div>
                 <h4 class="mt-1"><u>{{ calculateTotal() }}</u> €</h4>
-                <h5 class="mt-1"><em>includes {{ restaurant.deliveryCondition?.deliveryCost }} € for delivery</em></h5>
+                <h5 class="mt-1" *ngIf="restaurant.deliveryCondition?.deliveryCost; else noDeliveryCost"><em>includes {{ restaurant.deliveryCondition?.deliveryCost }} € for delivery</em></h5>
             </div>
         </div>
     </div>
     
+    <button [disabled]="orderItems.length===0" class="btn btn-primary mt-5 mb-1">Submit Order</button>
 
-    <a href="/" class="btn btn-primary mt-5 mb-5">Go Home</a>
+    <a href="/" class="btn btn-secondary mt-1 mb-5">Go Home</a>
 </div>
 
 <ng-template #elseBlock>
@@ -58,3 +59,8 @@
         </div>
     </div>
 </ng-template>
+
+<ng-template #noDeliveryCost>
+    <!-- Content to display when there is no delivery cost -->
+    <h5 class="mt-1 text-warning"><em>It looks like this restaurant does not deliver to your location</em></h5>
+  </ng-template>
