@@ -36,73 +36,89 @@
   border-radius: 3px;
 }
 
-.maintxt::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('assets/img/iconographic2.png');
-  background-size: 100px 100px;
-  background-repeat: repeat;
-  opacity: 0.2; /* Adjust the opacity of the background only */
-  z-index: -1;
-  border-radius: 3px;
-}
+  .maintxt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/img/iconographic2.png');
+    background-size: 100px 100px;
+    background-repeat: repeat;
+    opacity: 0.2; /* Adjust the opacity of the background only */
+    z-index: -1;
+    border-radius: 3px;
+  }
 
-.maintxt img {
-  width: 120px;
-  position: relative;
-  z-index: 1;
-}
+  .maintxt img {
+    width: 120px;
+    position: relative;
+    z-index: 1;
+  }
 
-.maintxt h2 {
-  min-height: 300px;
-  line-height: 300px;
-  text-align: center;
-  margin-left: -140px;
-  position: relative;
-  z-index: 1;
-}
+  .maintxt h2 {
+    min-height: 300px;
+    line-height: 300px;
+    text-align: center;
+    margin-left: -140px;
+    position: relative;
+    z-index: 1;
+  }
 
 
 .shopping-cart {
-  position: sticky;
-  top: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 20px;
 }
 
-.shopping-cart:hover {
-  border-color: #007bff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+  .sticky-container {
+    position: sticky;
+    top: 20px;
+  }
 
-.shopping-cart .card-body {
-  background-color: #f8f9fa;
-  border-radius: 10px;
-}
+  .shopping-cart:hover {
+    border-color: #007bff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
 
-.shopping-cart .card-title {
-  color: #333;
-  font-weight: bold;
-}
+  .shopping-cart .card-body {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
 
-.shopping-cart .card-subtitle {
-  color: #666;
-}
+  .shopping-cart .card-title {
+    color: #333;
+    font-weight: bold;
+  }
 
-.shopping-cart .card-link {
-  color: #007bff;
-  text-decoration: none;
-}
+  .shopping-cart .card-subtitle {
+    color: #666;
+  }
 
-.shopping-cart .card-link:hover {
-  color: #0056b3;
-}
+  .shopping-cart .card-link {
+    color: #007bff;
+    text-decoration: none;
+  }
 
-.shopping-cart .card-text {
-  color: #333;
-}
+  .shopping-cart .card-link:hover {
+    color: #0056b3;
+  }
+
+  .shopping-cart .card-text {
+    color: #333;
+  }
+
+
+  /* bootstrap fixes */
+
+  .btn-margin-right {
+    margin-right: 0.25rem; /* Equivalent to Bootstrap's mr-1 */
+  }
+  
+  .btn-margin-left {
+    margin-left: 0.25rem; /* Equivalent to Bootstrap's ml-1 */
+  }
+  

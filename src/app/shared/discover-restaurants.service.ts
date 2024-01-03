@@ -54,7 +54,6 @@ export class DiscoverRestaurantsService {
       next: data => {
         this.selectedMenu = data as DiscoverMenus[];
         this.selectedMenu = this.sortMenu(this.selectedMenu);
-        console.log(this.selectedMenu);
       },
       error: error => {
         console.log(error);
@@ -72,5 +71,11 @@ export class DiscoverRestaurantsService {
     return menuItems.sort((a, b) => {
       return (sortOrder[a.category] || 999) - (sortOrder[b.category] || 999);
     });
+  }
+
+  public lookupMenuItemName(menuId: number): string {
+    const menuItem = this.selectedMenu.find(x => x.id === menuId);
+    console.log(menuItem?.itemName);
+    return menuItem ? menuItem.itemName : '';
   }
 }

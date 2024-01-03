@@ -19,8 +19,8 @@
                     <h5 class="card-title">{{ menu.itemName }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ menu.category }}</h6>
                     <p class="card-text">{{ menu.description }}</p>
-                    <a href="" class="card-link"><i class="fa-solid fa-plus fa-lg mouse-hover"></i> Add to Order</a>
-                    <a href="" class="card-link"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Remove from Order</a>
+                    <button (click)="addToOrder(menu)" class="btn btn-primary mt-2 mr-1 btn-margin-right"><i class="fa-solid fa-plus fa-lg mouse-hover"></i> Add to Order</button>
+                    <button (click)="removeFromOrder(menu)" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Remove</button>
                 </div>
             </div>
         </div>
@@ -28,13 +28,14 @@
         <!-- Order -->
         <div class="col-4 ml-3">
             <h3 class="mt-3">Order</h3>
-            <div class="card mt-1 mb-1 shopping-cart">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="" class="card-link"><i class="fa-solid fa-plus fa-lg mouse-hover" alt="Add to Order"></i></a>
-                    <a href="" class="card-link"><i class="fa-solid fa-minus fa-lg mouse-hover" alt="Remove from Order"></i></a>
+            <div class="sticky-container">
+                <div class="card mt-1 mb-1 shopping-cart" *ngFor="let orderItem of orderItems">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ lookupMenuItemName(orderItem) }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ orderItem.quantity }}</h6>
+                        <button (click)="increaseOrderItem(orderItem)" class="btn btn-primary mt-2 mr-1 btn-margin-right"><i class="fa-solid fa-plus fa-lg mouse-hover" alt="Add to Order"></i></button>
+                        <button (click)="decreaseOrderItem(orderItem)" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover" alt="Remove from Order"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
