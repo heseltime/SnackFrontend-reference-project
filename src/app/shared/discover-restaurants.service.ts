@@ -2,24 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { DiscoverRestaurants } from './discover-restaurants.model';
+import { DiscoverMenus } from './discover-menus.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DiscoverRestaurantsService {
 
-  url:string = environment.apiBaseUrl+'/Restaurant/10000'; // stand-in radius
-  list:DiscoverRestaurants[] = []; 
+  restaurantUrl:string = environment.apiBaseUrl+'/Restaurant/10000'; // stand-in radius
+  menuUrl:string = environment.apiBaseUrl+'/Menu/'; // stand-in radius
+
+  restaurantList:DiscoverRestaurants[] = []; 
   selectedRestaurant:DiscoverRestaurants = new DiscoverRestaurants(); 
+
+  selectedMenu:DiscoverMenus[] = []; 
 
   constructor(private http: HttpClient) { }
 
   refreshList() {
-    this.http.get(this.url)
+    this.http.get(this.restaurantUrl)
     .subscribe({
       next: data => {
-        this.list = data as DiscoverRestaurants[];
-        console.log(this.list);
+        this.restaurantList = data as DiscoverRestaurants[];
       },
       error: error => {
         console.log(error);
@@ -28,14 +32,12 @@ export class DiscoverRestaurantsService {
   }
 
   getRestaurantById(id: number) {
-    if (this.list.length === 0) {
-      this.http.get(this.url)
+    if (this.restaurantList.length === 0) {
+      this.http.get(this.restaurantUrl)
       .subscribe({
         next: data => {
-          this.list = data as DiscoverRestaurants[];
-          //console.log(this.list.find(x => x.id === id));
-          //return this.list.find(x => x.id === id);
-          this.selectedRestaurant = this.list.find(x => x.id === id) as DiscoverRestaurants;
+          this.restaurantList = data as DiscoverRestaurants[];
+          this.selectedRestaurant = this.restaurantList.find(x => x.id === id) as DiscoverRestaurants;
         },
         error: error => {
           console.log(error);
@@ -43,7 +45,32 @@ export class DiscoverRestaurantsService {
       })
     }
     
-    //return this.list.find(x => x.id === id);
-    this.selectedRestaurant = this.list.find(x => x.id === id) as DiscoverRestaurants;
+    this.selectedRestaurant = this.restaurantList.find(x => x.id === id) as DiscoverRestaurants;
+  }
+
+  getMenuByRestaurantId(id: number) {
+    this.http.get(this.menuUrl + id)
+    .subscribe({
+      next: data => {
+        this.selectedMenu = data as DiscoverMenus[];
+        this.selectedMenu = this.sortMenu(this.selectedMenu);
+        console.log(this.selectedMenu);
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
+  }
+
+  private sortMenu(menuItems: DiscoverMenus[]): DiscoverMenus[] {
+    const sortOrder: { [key: string]: number } = {
+      'Starters': 1,
+      'Main Course': 2,
+      'Dessert': 3
+    };
+
+    return menuItems.sort((a, b) => {
+      return (sortOrder[a.category] || 999) - (sortOrder[b.category] || 999);
+    });
   }
 }

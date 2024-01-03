@@ -9,6 +9,7 @@ src
 |  |-- shared
 |  |  |-- discover-restaurants.service.ts
 |  |  |-- discover-restaurants.model.ts?
+|  |  |-- discover-menus.model.ts?
 |  |-- app.module.ts
 |-- styles.css
 |-- index.html

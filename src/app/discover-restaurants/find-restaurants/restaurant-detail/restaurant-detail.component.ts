@@ -16,5 +16,6 @@ export class RestaurantDetailComponent {
   ngOnInit() {
     const params = this.route.snapshot.params;
     this.service.getRestaurantById(parseInt(params['id']));
+    this.service.getMenuByRestaurantId(parseInt(params['id']));
   }
 }
