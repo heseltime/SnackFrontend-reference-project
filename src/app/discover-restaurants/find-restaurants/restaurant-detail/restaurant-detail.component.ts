@@ -11,12 +11,10 @@ import { DiscoverRestaurantsService } from 'src/app/shared/discover-restaurants.
 export class RestaurantDetailComponent {
   restaurant: DiscoverRestaurants | undefined = new DiscoverRestaurants();
 
-  constructor(private route: ActivatedRoute, private service: DiscoverRestaurantsService) { }
+  constructor(private route: ActivatedRoute, public service: DiscoverRestaurantsService) { }
 
   ngOnInit() {
     const params = this.route.snapshot.params;
-    //console.log(params['id']);
-    this.restaurant = this.service.getRestaurantById(parseInt(params['id']));
-    //console.log(this.restaurant);
+    this.service.getRestaurantById(parseInt(params['id']));
   }
 }

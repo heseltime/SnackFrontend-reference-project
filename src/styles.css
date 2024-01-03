@@ -3,3 +3,53 @@
 .mouse-hover {
   cursor: pointer;
 }
+
+/* details page */
+
+.maintxt {
+  background-image: url(https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg);
+  background-size: cover;
+  min-height: 300px;
+  line-height: 300px;
+  text-align: center;
+}
+
+.shopping-cart {
+  position: sticky;
+  top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shopping-cart:hover {
+  border-color: #007bff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.shopping-cart .card-body {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.shopping-cart .card-title {
+  color: #333;
+  font-weight: bold;
+}
+
+.shopping-cart .card-subtitle {
+  color: #666;
+}
+
+.shopping-cart .card-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.shopping-cart .card-link:hover {
+  color: #0056b3;
+}
+
+.shopping-cart .card-text {
+  color: #333;
+}

@@ -9,7 +9,8 @@ import { DiscoverRestaurants } from './discover-restaurants.model';
 export class DiscoverRestaurantsService {
 
   url:string = environment.apiBaseUrl+'/Restaurant/10000'; // stand-in radius
-  list:DiscoverRestaurants[] = [];  
+  list:DiscoverRestaurants[] = []; 
+  selectedRestaurant:DiscoverRestaurants = new DiscoverRestaurants(); 
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +28,22 @@ export class DiscoverRestaurantsService {
   }
 
   getRestaurantById(id: number) {
-    return this.list.find(x => x.id === id);
+    if (this.list.length === 0) {
+      this.http.get(this.url)
+      .subscribe({
+        next: data => {
+          this.list = data as DiscoverRestaurants[];
+          //console.log(this.list.find(x => x.id === id));
+          //return this.list.find(x => x.id === id);
+          this.selectedRestaurant = this.list.find(x => x.id === id) as DiscoverRestaurants;
+        },
+        error: error => {
+          console.log(error);
+        }
+      })
+    }
+    
+    //return this.list.find(x => x.id === id);
+    this.selectedRestaurant = this.list.find(x => x.id === id) as DiscoverRestaurants;
   }
 }
