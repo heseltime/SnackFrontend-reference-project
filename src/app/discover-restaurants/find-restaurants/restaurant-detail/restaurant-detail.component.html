@@ -1,5 +1,14 @@
-<div class="row mt-3">
-    <p>restaurant-detail works!</p>
+<div class="row mt-3" *ngIf="restaurant; else elseBlock">
+    <h2>{{ restaurant.name }}</h2>
+    <p>Participating restaurant</p>
 
     <a href="/" class="btn btn-primary">Go Home</a>
 </div>
+
+<ng-template #elseBlock>
+    <div class="row mt-3">
+        <p>Please make a selection for the homepage</p>
+
+        <a href="/" class="btn btn-primary">Go Home</a>
+    </div>
+</ng-template>

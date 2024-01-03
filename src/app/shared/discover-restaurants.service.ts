@@ -18,11 +18,15 @@ export class DiscoverRestaurantsService {
     .subscribe({
       next: data => {
         this.list = data as DiscoverRestaurants[];
-        //console.log(this.list);
+        console.log(this.list);
       },
       error: error => {
         console.log(error);
       }
     })
+  }
+
+  getRestaurantById(id: number) {
+    return this.list.find(x => x.id === id);
   }
 }
