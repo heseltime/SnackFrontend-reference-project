@@ -1,3 +1,5 @@
+import { DiscoverDeliveryConditions } from "./discover-delivery-conditions.model";
+
 export class DiscoverRestaurants {
     id: number;
     name: string;
@@ -7,6 +9,7 @@ export class DiscoverRestaurants {
     webHookUrl: string;
     titleImage: Uint8Array | null;
     apiKey: string;
+    deliveryCondition: DiscoverDeliveryConditions | undefined;
 
     constructor() {
         this.id = 0;
@@ -17,5 +20,6 @@ export class DiscoverRestaurants {
         this.webHookUrl = '';
         this.titleImage = null;
         this.apiKey = '';
+        this.deliveryCondition = undefined;
     }
 }

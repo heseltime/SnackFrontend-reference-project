@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { DiscoverRestaurants } from './discover-restaurants.model';
 import { DiscoverMenus } from './discover-menus.model';
+import { DiscoverDeliveryConditions } from './discover-delivery-conditions.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,14 @@ export class DiscoverRestaurantsService {
 
   restaurantUrl:string = environment.apiBaseUrl+'/Restaurant/10000'; // stand-in radius
   menuUrl:string = environment.apiBaseUrl+'/Menu/'; // stand-in radius
+  deliveryConditionUrl:string = environment.apiBaseUrl+'/DeliveryCondition/'; // !!
 
   restaurantList:DiscoverRestaurants[] = []; 
   selectedRestaurant:DiscoverRestaurants = new DiscoverRestaurants(); 
 
   selectedMenu:DiscoverMenus[] = []; 
+
+  deliveryCondition:DiscoverDeliveryConditions = new DiscoverDeliveryConditions(); // !!
 
   constructor(private http: HttpClient) { }
 
@@ -73,9 +77,15 @@ export class DiscoverRestaurantsService {
     });
   }
 
-  public lookupMenuItemName(menuId: number): string {
-    const menuItem = this.selectedMenu.find(x => x.id === menuId);
-    console.log(menuItem?.itemName);
-    return menuItem ? menuItem.itemName : '';
+  getDeliveryConditionByRestaurantId(id: number) {
+    this.http.get(this.deliveryConditionUrl + id)
+    .subscribe({
+      next: data => {
+        this.deliveryCondition = data as DiscoverDeliveryConditions;
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
   }
 }

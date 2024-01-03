@@ -37,6 +37,8 @@
                         <button (click)="decreaseOrderItem(orderItem)" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover" alt="Remove from Order"></i></button>
                     </div>
                 </div>
+                <h4 class="mt-1"><u>{{ calculateTotal() }}</u> €</h4>
+                <h5 class="mt-1"><em>includes {{ restaurant.deliveryCondition?.deliveryCost }} € for delivery</em></h5>
             </div>
         </div>
     </div>

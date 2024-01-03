@@ -16,6 +16,9 @@ export class RestaurantDetailComponent {
 
   order:DiscoverOrders = new DiscoverOrders(); // order metadata like customer info
   orderItems:DiscoverOrderItems[] = []; // actual food items
+                                    // all of this has to be sent to server
+
+  currentTotal:Number = 0;
 
   constructor(private route: ActivatedRoute, public service: DiscoverRestaurantsService) { }
 
@@ -67,5 +70,16 @@ export class RestaurantDetailComponent {
       return foundMenuItemName.itemName;
     }
     return ''; 
+  }
+
+  calculateTotal() {
+    let total = 0;
+    this.orderItems.forEach(orderItem => {
+      const foundMenuItem = this.service.selectedMenu.find(x => x.id === orderItem.menuId);
+      if (foundMenuItem) {
+        total += foundMenuItem.price * orderItem.quantity;
+      }
+    });
+    return total + (this.service.selectedRestaurant?.deliveryCondition?.deliveryCost ?? 0);
   }
 }
