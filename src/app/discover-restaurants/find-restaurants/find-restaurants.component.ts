@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DiscoverRestaurantsService } from 'src/app/shared/discover-restaurants.service';
+import { DiscoverUsers } from 'src/app/shared/discover-users.model';
 
 @Component({
   selector: 'app-find-restaurants',
@@ -7,6 +8,7 @@ import { DiscoverRestaurantsService } from 'src/app/shared/discover-restaurants.
   styleUrls: ['./find-restaurants.component.css']
 })
 export class FindRestaurantsComponent {
+  @Input() user:DiscoverUsers = new DiscoverUsers(0, '', '', '');
 
   constructor(public service : DiscoverRestaurantsService) { }
 

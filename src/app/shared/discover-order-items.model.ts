@@ -1,11 +1,11 @@
+import { DiscoverMenus } from "./discover-menus.model";
+
 export class DiscoverOrderItems {
-    orderId: string; // Representing Guid as string in TypeScript
-    menuId: number;
+    menu: DiscoverMenus;
     quantity: number;
 
-    constructor(orderId: string, menuId: number, quantity: number) {
-        this.orderId = orderId;
-        this.menuId = menuId;
+    constructor(menu: DiscoverMenus, quantity: number) {
+        this.menu = menu;
         this.quantity = quantity;
     }
 }

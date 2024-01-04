@@ -11,6 +11,8 @@ import { MyOrdersComponent } from './discover-restaurants/my-orders/my-orders.co
 import { HttpClientModule } from '@angular/common/http';
 import { RestaurantDetailComponent } from './discover-restaurants/find-restaurants/restaurant-detail/restaurant-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { OrderFormComponent } from './discover-restaurants/find-restaurants/restaurant-detail/order-form/order-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localeDEAT);
 
@@ -21,12 +23,14 @@ registerLocaleData(localeDEAT);
     FindRestaurantsComponent,
     MyOrdersComponent,
     RestaurantDetailComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{
       provide: LOCALE_ID,

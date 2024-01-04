@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { DiscoverRestaurants } from './discover-restaurants.model';
 import { DiscoverMenus } from './discover-menus.model';
 import { DiscoverDeliveryConditions } from './discover-delivery-conditions.model';
+import { DiscoverOrders } from './discover-orders.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class DiscoverRestaurantsService {
   restaurantUrl:string = environment.apiBaseUrl+'/Restaurant/10000'; // stand-in radius
   menuUrl:string = environment.apiBaseUrl+'/Menu/'; // stand-in radius
   deliveryConditionUrl:string = environment.apiBaseUrl+'/DeliveryCondition/'; // !!
+  orderUrl:string = environment.apiBaseUrl+'/Order'; 
 
   restaurantList:DiscoverRestaurants[] = []; 
   selectedRestaurant:DiscoverRestaurants = new DiscoverRestaurants(); 
@@ -82,6 +84,18 @@ export class DiscoverRestaurantsService {
     .subscribe({
       next: data => {
         this.deliveryCondition = data as DiscoverDeliveryConditions;
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
+  }
+
+  submitOrder(order: DiscoverOrders) {
+    this.http.post(this.orderUrl, order)
+    .subscribe({
+      next: data => {
+        console.log(data);
       },
       error: error => {
         console.log(error);
