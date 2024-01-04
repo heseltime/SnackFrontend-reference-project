@@ -1,2 +1,4 @@
+assumptions (assignment)
+
 - one single student, already logged in, central order management (student perspective)
-- also only orders per session stored: session storage for this, most likely (alt. all orders in DB)
+- also only orders per session stored: local storage for this (data model not built out to link customers and orders, actually)

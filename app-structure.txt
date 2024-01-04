@@ -1,15 +1,22 @@
+app structure:
+
 src
 |-- app
-|  |-- discover-restaurants, ...
+|  |-- discover-restaurants <------------------------------------------ user view of this app, main part: see assumptions.txt
 |  |  |-- find-restaurants
+|  |  |  |-- restaurant-detail
+|  |  |  |  |-- order form
 |  |  |-- my-orders
 |  |-- manage-restaurant
 |  |  |-- incoming orders
 |  |  |-- profile (restaurant) with menu upload
+|  |-- page-not-found
 |  |-- shared
 |  |  |-- discover-restaurants.service.ts
 |  |  |-- discover-restaurants.model.ts?
 |  |  |-- discover-menus.model.ts?
+|  |  |-- discover-... .model.ts? - all the models in the end
+|  |-- manage-restaurant <--------------------------------------------- restaurant view with authentication
 |  |-- app.module.ts
-|-- styles.css
+|-- styles.css, assets and environments
 |-- index.html
