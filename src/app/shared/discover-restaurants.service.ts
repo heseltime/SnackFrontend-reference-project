@@ -15,7 +15,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class DiscoverRestaurantsService {
 
-  restaurantUrl:string = environment.apiBaseUrl+'/Restaurant/10000'; // stand-in radius
+  restaurantUrl:string = environment.apiBaseUrl+'/Restaurant'; // stand-in radius
   menuUrl:string = environment.apiBaseUrl+'/Menu/'; // stand-in radius
   deliveryConditionUrl:string = environment.apiBaseUrl+'/DeliveryCondition/'; // !!
   orderUrl:string = environment.apiBaseUrl+'/Order'; 
@@ -29,8 +29,20 @@ export class DiscoverRestaurantsService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  refreshList() {
-    this.http.get(this.restaurantUrl)
+  refreshListGlobal() {
+    this.http.get(this.restaurantUrl + '/10000')
+    .subscribe({
+      next: data => {
+        this.restaurantList = data as DiscoverRestaurants[];
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
+  }
+
+  refreshList(radius: number, latitude: number, longitude: number) {
+    this.http.get(this.restaurantUrl + '/' + radius + '?latitude=' + latitude + '&longitude=' + longitude)
     .subscribe({
       next: data => {
         this.restaurantList = data as DiscoverRestaurants[];
