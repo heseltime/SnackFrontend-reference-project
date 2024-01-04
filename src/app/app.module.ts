@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
+import localeDEAT from '@angular/common/locales/de-AT';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +11,8 @@ import { MyOrdersComponent } from './discover-restaurants/my-orders/my-orders.co
 import { HttpClientModule } from '@angular/common/http';
 import { RestaurantDetailComponent } from './discover-restaurants/find-restaurants/restaurant-detail/restaurant-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+registerLocaleData(localeDEAT);
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+      provide: LOCALE_ID,
+      useValue: 'de-AT'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
