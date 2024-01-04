@@ -29,6 +29,81 @@
   border-radius: 3px; /* To match the border radius of the parent if necessary */
 }
 
+
+/* Slider */
+
+.custom-styled-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.custom-styled-card .card-body {
+  padding: 20px;
+}
+
+.custom-styled-card .card-title {
+  color: #007bff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.custom-styled-card .form-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #e9ecef;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.custom-styled-card .form-range:hover {
+  opacity: 1;
+}
+
+.custom-styled-card .form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #007bff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.custom-styled-card .form-range::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #007bff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.custom-styled-card .form-range::-webkit-slider-runnable-track {
+  height: 15px;
+  cursor: pointer;
+  background: #007bff;
+  border-radius: 1rem;
+}
+
+.custom-styled-card .form-range::-moz-range-track {
+  height: 15px;
+  cursor: pointer;
+  background: #007bff;
+  border-radius: 1rem;
+}
+
+.custom-styled-card .form-range:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom-styled-card .form-range:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
 /* details page */
 .maintxt {
   position: relative;
