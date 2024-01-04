@@ -6,7 +6,7 @@
         <div class="mt-3">
             <p class="text-right"><i class="fa-solid fa-user fa-lg"></i> Logged in as: <b>{{ user.userName }}</b></p>
         </div>
-        <app-my-orders />
+        <app-my-orders [lastOrderId]="lastOrderId" />
     </div>
     <a href="/" class="btn btn-secondary mt-5">Looking for Restaurant Management?</a>
 </div>

@@ -5,8 +5,10 @@ import { DiscoverRestaurants } from './discover-restaurants.model';
 import { DiscoverMenus } from './discover-menus.model';
 import { DiscoverDeliveryConditions } from './discover-delivery-conditions.model';
 import { DiscoverOrders } from './discover-orders.model';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { catchError, map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -96,5 +98,19 @@ export class DiscoverRestaurantsService {
   submitOrder(order: DiscoverOrders): Observable<any> {
     return this.http.post(this.orderUrl, order);
   }
+
+  getOrderById(id: string): Observable<DiscoverOrders> {
+    return this.http.get<DiscoverOrders>(this.orderUrl + '/' + id).pipe(
+        map(data => {
+            // You can perform any additional transformations or logic here if needed
+            return data;
+        }),
+        catchError(error => {
+            // Handle or log the error
+            console.error(error);
+            return throwError(error); // Make sure to import throwError from 'rxjs'
+        })
+    );
+}
   
 }

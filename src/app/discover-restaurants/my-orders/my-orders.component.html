@@ -1,12 +1,12 @@
 <div class="col-12 ml-3">
     <h3 class="mt-1">Current Order</h3>
-    <div class="card mt-1 mb-1 shopping-cart">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="" class="card-link"><i class="fa-solid fa-plus fa-lg mouse-hover"></i> Add to Order</a>
-            <a href="" class="card-link"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Remove from Order</a>
+    <h4>Status: <span [ngClass]="getStatusClass(lastOrder.status)">{{ lastOrder.status }}</span></h4>
+    <div class="sticky-container">
+        <div class="card mt-1 mb-1 shopping-cart" *ngFor="let orderItem of lastOrder.items">
+            <div class="card-body">
+                <h5 class="card-title">{{ orderItem.menu.itemName }} ({{ orderItem.quantity }})</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ orderItem.menu.category }} | {{ orderItem.menu.description }}</h6>
+            </div>
         </div>
     </div>
 </div>
