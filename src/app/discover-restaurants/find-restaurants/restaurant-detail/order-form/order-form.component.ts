@@ -4,6 +4,7 @@ import { DeliveryStatus, DiscoverOrders } from 'src/app/shared/discover-orders.m
 import { DiscoverRestaurants } from 'src/app/shared/discover-restaurants.model';
 import { FormBuilder } from '@angular/forms';
 import { DiscoverRestaurantsService } from 'src/app/shared/discover-restaurants.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-form',
@@ -11,6 +12,8 @@ import { DiscoverRestaurantsService } from 'src/app/shared/discover-restaurants.
   styleUrls: ['./order-form.component.css']
 })
 export class OrderFormComponent {
+  returnData: any = null;
+  returnError: any = null;
 
   @Input() order: DiscoverOrders = {
     restaurant: new DiscoverRestaurants(),
@@ -30,6 +33,7 @@ export class OrderFormComponent {
   constructor(
     public service : DiscoverRestaurantsService,
     private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -43,15 +47,43 @@ export class OrderFormComponent {
     // In case of any additional input data
   }
 
-  onSubmit() {
-    console.log(this.order);
-    this.service.submitOrder(this.order).subscribe({
-      next: (data) => console.log('Success:', data), // TODO
-      error: (error) => console.error('Error:', error) // TODO
-    });
-
+  //onSubmit() {
+  //  console.log(this.order);
+  //  this.service.submitOrder(this.order).subscribe({
+  //    next: (data) => this.returnData = data, 
+  //    error: (error) => {
+  //      //console.log(error);
+  //      this.returnError = error;
+  //    } 
+  //  });
+  //
     // pass to child component alert box
     // save order it to session/local (?) storage in case of success, to display on homepage
-  }
+  //}
+
+  onSubmit() {
+    this.service.submitOrder(this.order).subscribe({
+        next: (response) => {
+            const orderId = response;
+            this.returnData = orderId; // to signal to template that order was successful
+
+            localStorage.setItem('lastOrderId', orderId); // For local storage
+            // OR
+            // sessionStorage.setItem('lastOrderId', orderId); // For session storage
+
+            // Redirect to the homepage after a delay
+            setTimeout(() => {
+                this.router.navigate(['/']); // Replace '/' with your homepage route
+            }, 1000); // Delay in milliseconds
+        },
+        error: (error) => {
+            this.returnError = error;
+            console.error('Error:', error);
+            // Handle any errors here
+        }
+    });
+}
+
+  
   
 }

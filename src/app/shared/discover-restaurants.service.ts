@@ -6,6 +6,7 @@ import { DiscoverMenus } from './discover-menus.model';
 import { DiscoverDeliveryConditions } from './discover-delivery-conditions.model';
 import { DiscoverOrders } from './discover-orders.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class DiscoverRestaurantsService {
 
   deliveryCondition:DiscoverDeliveryConditions = new DiscoverDeliveryConditions(); // !!
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   refreshList() {
     this.http.get(this.restaurantUrl)

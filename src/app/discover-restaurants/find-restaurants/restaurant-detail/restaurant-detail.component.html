@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <h4 class="mt-1"><u>{{ calculateTotal() | currency:'€':'symbol':'1.2-2':'de-AT' }}</u></h4>
-                <h5 class="mt-1" *ngIf="restaurant.deliveryCondition?.deliveryCost; else noDeliveryCost"><em>includes {{ restaurant.deliveryCondition?.deliveryCost | currency:'€':'symbol':'1.2-2':'de-AT' }} for delivery</em></h5>
+                <h5 class="mt-1" *ngIf="restaurant.deliveryCondition ? checkOrderIsPossible(restaurant.deliveryCondition) : false; else noDeliveryCost"><em>includes {{ restaurant.deliveryCondition?.deliveryCost | currency:'€':'symbol':'1.2-2':'de-AT' }} for delivery</em></h5>
             </div>
         </div>
     </div>

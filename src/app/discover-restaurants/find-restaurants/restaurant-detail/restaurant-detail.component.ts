@@ -7,6 +7,7 @@ import { DiscoverOrders } from 'src/app/shared/discover-orders.model';
 import { DiscoverMenus } from 'src/app/shared/discover-menus.model';
 import { DiscoverUsers } from 'src/app/shared/discover-users.model';
 import { DiscoverAddresses } from 'src/app/shared/discover-addresses.model';
+import { DiscoverDeliveryConditions } from 'src/app/shared/discover-delivery-conditions.model';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -102,4 +103,32 @@ export class RestaurantDetailComponent {
     });
     return total + (this.service.selectedRestaurant?.deliveryCondition?.deliveryCost ?? 0);
   }
+
+  checkOrderIsPossible(deliveryCondition: DiscoverDeliveryConditions) {
+    if (deliveryCondition) {
+      if (this.restaurant && this.user) {
+        //console.log(this.restaurant.gpsLat, this.restaurant.gpsLong, this.user.latitude, this.user.longitude);
+        return deliveryCondition.distance >= this.getLocationDistance(this.restaurant.gpsLat, this.restaurant.gpsLong, this.user.latitude, this.user.longitude);
+      }
+    }
+    return false;
+  }
+
+  getLocationDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    const toRad = (value: number): number => {
+        return value * Math.PI / 180;
+    };
+
+    const earthRadius = 6371; // Radius of the earth in kilometers
+    const dLat = toRad(lat2 - lat1);
+    const dLon = toRad(lon2 - lon1);
+    const a = 
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = earthRadius * c; // Distance in kilometers
+
+    return distance;
+}
 }
