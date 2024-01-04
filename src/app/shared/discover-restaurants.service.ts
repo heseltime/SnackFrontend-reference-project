@@ -5,6 +5,7 @@ import { DiscoverRestaurants } from './discover-restaurants.model';
 import { DiscoverMenus } from './discover-menus.model';
 import { DiscoverDeliveryConditions } from './discover-delivery-conditions.model';
 import { DiscoverOrders } from './discover-orders.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -91,15 +92,8 @@ export class DiscoverRestaurantsService {
     })
   }
 
-  submitOrder(order: DiscoverOrders) {
-    this.http.post(this.orderUrl, order)
-    .subscribe({
-      next: data => {
-        console.log(data);
-      },
-      error: error => {
-        console.log(error);
-      }
-    })
+  submitOrder(order: DiscoverOrders): Observable<any> {
+    return this.http.post(this.orderUrl, order);
   }
+  
 }

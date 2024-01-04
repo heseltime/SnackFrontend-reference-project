@@ -25,8 +25,6 @@ export class OrderFormComponent {
   };
 
   orderForm = this.formBuilder.group({
-    name: '',
-    address: ''
   });
 
   constructor(
@@ -45,9 +43,15 @@ export class OrderFormComponent {
     // In case of any additional input data
   }
 
-  onSubmit(): void {
-    //console.log(this.orderForm.value); 
+  onSubmit() {
     console.log(this.order);
-    this.service.submitOrder(this.order); // get order id for local storage?
+    this.service.submitOrder(this.order).subscribe({
+      next: (data) => console.log('Success:', data), // TODO
+      error: (error) => console.error('Error:', error) // TODO
+    });
+
+    // pass to child component alert box
+    // save order it to session/local (?) storage in case of success, to display on homepage
   }
+  
 }
