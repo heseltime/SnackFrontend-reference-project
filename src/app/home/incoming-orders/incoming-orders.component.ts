@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { DeliveryStatus, DiscoverOrders } from 'src/app/shared/discover-orders.model';
 import { DiscoverRestaurantsService } from 'src/app/shared/discover-restaurants.service';
+import { ManageRestaurantService } from 'src/app/shared/manage-restaurant.service';
 
 @Component({
   selector: 'app-incoming-orders',
@@ -12,7 +13,11 @@ export class IncomingOrdersComponent {
   @Input() orders: DiscoverOrders[] = [];
   orderDetail: DiscoverOrders = new DiscoverOrders(); // detail view
 
-  constructor(public service: DiscoverRestaurantsService) { }
+  @Input() token: string = ''; // authentication token
+
+  orderToUpdateStatusOn: DiscoverOrders = new DiscoverOrders(); 
+
+  constructor(public service: DiscoverRestaurantsService, public managementService: ManageRestaurantService) { }
 
   getStatusClass(status: DeliveryStatus): string {
       switch (status) {
@@ -42,7 +47,34 @@ export class IncomingOrdersComponent {
     });
   }
 
-  switchStatus(id: number): void {
-    // TODO
+  updateStatus(orderId: number, currentStatus: DeliveryStatus): void {
+      //console.log('Switching status of order:', orderId);
+      let newStatus = DeliveryStatus[currentStatus as unknown as keyof typeof DeliveryStatus] + 1;
+      if (newStatus > 4) {
+        newStatus = 4;
+      }
+      this.managementService.updateOrderStatus(this.token, orderId, newStatus).subscribe({
+        next: (response) => {
+            console.log('Successfully updated order in backend:', response);
+            this.getOrders();
+        },
+        error: (error) => {
+            console.error('Error updating order in backend:', error);
+        }
+    });
+  }
+
+  getOrders(): void {
+    this.managementService.getOrders(this.token).subscribe({
+        next: (response) => {
+            //console.log('Successfully retrieved orders from backend:', response);
+            // order orders descending by timestamp
+            response.sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1);
+            this.orders = response;
+        },
+        error: (error) => {
+            console.error('Error retrieving orders from backend:', error);
+        }
+    });
   }
 }

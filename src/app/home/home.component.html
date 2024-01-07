@@ -7,7 +7,7 @@
 
 <div class="row hero-dark dark mt-2" *ngIf="auth.isAuthenticated$ | async; else loggedOut">
   <div class="col-6">
-      <app-incoming-orders [orders]="orders"></app-incoming-orders>
+      <app-incoming-orders [orders]="orders" [token]="token"></app-incoming-orders>
   </div>
   <div class="col-6">
       <div class="mt-3">

@@ -16,6 +16,7 @@ export class ManageRestaurantService {
   apiTokenUrl:string = environment.apiBaseUrl+'/auth/login'; // also provided in home.component.ts
 
   ordersUrl:string = environment.apiBaseUrl+'/Business/orders';
+  orderStatusUpdateUrl:string = environment.apiBaseUrl+'/Business/orderStatusUpdate';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -29,6 +30,14 @@ export class ManageRestaurantService {
 
   getOrders(token: string): Observable<DiscoverOrders[]> {
     return this.http.get<DiscoverOrders[]>(this.ordersUrl, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+  }
+
+  updateOrderStatus(token: string, orderId: number, newStatus: number): Observable<any> {
+    return this.http.post(this.orderStatusUpdateUrl + '/' + orderId, newStatus, {
       headers: {
         'Authorization': 'Bearer ' + token
       }

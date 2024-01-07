@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Output } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { AsyncPipe, CommonModule, DOCUMENT } from '@angular/common';
 import { ManageRestaurantService } from '../shared/manage-restaurant.service';
@@ -18,7 +18,7 @@ export class HomeComponent {
   token: string = '';
 
   // backend requests
-  orders: DiscoverOrders[] = [];
+  @Output() orders: DiscoverOrders[] = [];
 
   constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService, public service: ManageRestaurantService) {}
 
