@@ -15,6 +15,8 @@ import { catchError, map } from 'rxjs/operators';
 export class ManageRestaurantService {
   apiTokenUrl:string = environment.apiBaseUrl+'/auth/login'; // also provided in home.component.ts
 
+  ordersUrl:string = environment.apiBaseUrl+'/Business/orders';
+
   constructor(private http: HttpClient, private router: Router) { }
 
   authenticateBackend(restaurantName: string, apiKey: string): Observable<any> {
@@ -23,6 +25,14 @@ export class ManageRestaurantService {
       "ApiKey": apiKey
     };
     return this.http.post(this.apiTokenUrl, authenticationInfo);
+  }
+
+  getOrders(token: string): Observable<DiscoverOrders[]> {
+    return this.http.get<DiscoverOrders[]>(this.ordersUrl, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
   }
 
 }
