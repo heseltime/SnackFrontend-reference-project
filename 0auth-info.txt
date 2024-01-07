@@ -1,0 +1,16 @@
+=== dev-1yjs8ordjywgr6ly.us.auth0.com application created
+
+  CLIENT ID            41burJXSnjlQzz25rYvbAsIuugrDaxFG
+  NAME                 SnackFrontend
+  DESCRIPTION
+  TYPE                 Single Page Web Application
+  CALLBACKS            http://localhost:4200/manage
+  ALLOWED LOGOUT URLS  http://localhost:4200
+  ALLOWED ORIGINS      http://localhost:4200
+  ALLOWED WEB ORIGINS  http://localhost:4200
+  TOKEN ENDPOINT AUTH  none
+  GRANTS               implicit, authorization_code, refresh_token
+
+ ▸    Quickstarts: https://auth0.com/docs/quickstart/spa
+ ▸    Hint: Emulate this app's login flow by running `auth0 test login 41burJXSnjlQzz25rYvbAsIuugrDaxFG`
+ ▸    Hint: Consider running `auth0 quickstarts download 41burJXSnjlQzz25rYvbAsIuugrDaxFG`

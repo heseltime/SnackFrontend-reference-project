@@ -2,7 +2,7 @@ app structure:
 
 src
 |-- app
-|  |-- discover-restaurants <------------------------------------------ user view of this app, main part: see assumptions.txt
+|  |-- discover-restaurants <--- *route: /restaurants ---------------- user view of this app, main part: see assumptions.txt
 |  |  |-- find-restaurants
 |  |  |  |-- restaurant-detail
 |  |  |  |  |-- order form
@@ -16,7 +16,8 @@ src
 |  |  |-- discover-restaurants.model.ts?
 |  |  |-- discover-menus.model.ts?
 |  |  |-- discover-... .model.ts? - all the models in the end
-|  |-- manage-restaurant <--------------------------------------------- restaurant view with authentication
+||||-- OpenID Connect/0Auth for authentication
+||||-- manage-restaurant <------ *route: /manage --------------------- restaurant view with authentication
 |  |-- app.module.ts
 |-- styles.css, assets and environments
 |-- index.html
