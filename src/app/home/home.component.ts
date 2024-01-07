@@ -3,9 +3,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { AsyncPipe, CommonModule, DOCUMENT } from '@angular/common';
 
 @Component({
-  standalone: true,
   selector: 'app-home',
-  imports: [AsyncPipe, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

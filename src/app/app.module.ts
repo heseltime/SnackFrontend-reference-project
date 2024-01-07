@@ -14,6 +14,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { OrderFormComponent } from './discover-restaurants/find-restaurants/restaurant-detail/order-form/order-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from '@auth0/auth0-angular';
+import { IncomingOrdersComponent } from './home/incoming-orders/incoming-orders.component';
+import { MyRestaurantComponent } from './home/my-restaurant/my-restaurant.component';
+import { HomeComponent } from './home/home.component';
 
 registerLocaleData(localeDEAT);
 
@@ -25,7 +28,10 @@ registerLocaleData(localeDEAT);
     MyOrdersComponent,
     RestaurantDetailComponent,
     PageNotFoundComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    IncomingOrdersComponent,
+    MyRestaurantComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,7 @@ registerLocaleData(localeDEAT);
       authorizationParams: {
         redirect_uri: window.location.origin + '/manage'
       }
-    }),
+    })
   ],
   providers: [{
       provide: LOCALE_ID,
