@@ -1,7 +1,21 @@
-<div *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-  <button class="btn btn-danger mt-2 mb-1" (click)="logout()">Log out</button>
-</div>
+<div class="row hero dark mt-2">
+  <div *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <button class="btn btn-danger mt-2 mb-1" (click)="logout()">Log out</button>
+  </div>
+  
+  <ng-template #loggedOut>
+    <button class="btn btn-primary mt-2 mb-1" (click)="login()">Log in</button>
+  </ng-template>
 
-<ng-template #loggedOut>
-  <button class="btn btn-primary mt-2 mb-1" (click)="login()">Log in</button>
-</ng-template>
+  <!--
+  <div class="col-6">
+      <app-find-restaurants [user]="user" />   
+  </div>
+  <div class="col-6">
+      <div class="mt-3">
+          <p class="text-right"><i class="fa-solid fa-user fa-lg"></i> Logged in as: <b>{{ user.userName }}</b></p>
+      </div>
+      <app-my-orders [lastOrderId]="lastOrderId" />
+  </div>-->
+  <a href="/" class="btn btn-secondary mt-5 col-10 offset-1">Back to Restaurants Overview</a>
+</div>

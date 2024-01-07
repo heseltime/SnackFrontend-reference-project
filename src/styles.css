@@ -197,3 +197,9 @@
     margin-left: 0.25rem; /* Equivalent to Bootstrap's ml-1 */
   }
   
+  /* dark theme */
+
+  .dark {
+    background-color: #333; /* Example: dark background */
+    color: #fff; /* Example: light text */
+  }
