@@ -7,6 +7,7 @@
             <h6 class="card-subtitle mb-2 text-muted">This order was placed on {{ order.timestamp | date }}</h6>
             <button (click)="getOrder(order.id)" class="card-link no-border">View Order</button>
             <button (click)="updateStatus(order.id, order.status)" class="card-link no-border">Update Status <i class="fa-solid fa-circle-arrow-up"></i></button>
+            <button (click)="reverseStatus(order.id, order.status)" class="card-link no-border">Reverse Status Update <i class="fa-solid fa-circle-arrow-down"></i></button>
             <ul *ngIf="orderDetail.items && orderDetail.id === order.id">
                 <li *ngFor="let item of orderDetail.items">{{ item.quantity }} {{ item.menu.itemName }}</li>
             </ul>

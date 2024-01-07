@@ -55,7 +55,7 @@ export class IncomingOrdersComponent {
       }
       this.managementService.updateOrderStatus(this.token, orderId, newStatus).subscribe({
         next: (response) => {
-            console.log('Successfully updated order in backend:', response);
+            //console.log('Successfully updated order in backend:', response);
             this.getOrders();
         },
         error: (error) => {
@@ -63,6 +63,23 @@ export class IncomingOrdersComponent {
         }
     });
   }
+
+  reverseStatus(orderId: number, currentStatus: DeliveryStatus): void {
+    //console.log('Switching status of order:', orderId);
+    let newStatus = DeliveryStatus[currentStatus as unknown as keyof typeof DeliveryStatus] - 1;
+    if (newStatus < 0) {
+      newStatus = 0;
+    }
+    this.managementService.updateOrderStatus(this.token, orderId, newStatus).subscribe({
+      next: (response) => {
+          //console.log('Successfully updated order in backend:', response);
+          this.getOrders();
+      },
+      error: (error) => {
+          console.error('Error updating order in backend:', error);
+      }
+  });
+}
 
   getOrders(): void {
     this.managementService.getOrders(this.token).subscribe({
