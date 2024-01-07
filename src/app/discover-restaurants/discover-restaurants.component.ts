@@ -9,7 +9,7 @@ import { DiscoverOrders } from '../shared/discover-orders.model';
   styleUrls: ['./discover-restaurants.component.css']
 })
 export class DiscoverRestaurantsComponent {
-  user:DiscoverUsers = new DiscoverUsers(1, 'john_doe', '', ''); // example user, where id and name correspond to db however
+  testStudent:DiscoverUsers = new DiscoverUsers(1, 'john_doe', '', ''); // example user, where id and name correspond to db however
                                        // used for order logic
   lastOrderId: string | null = null;
 

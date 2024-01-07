@@ -1,10 +1,11 @@
 <div class="row hero">
     <div class="col-6">
-        <app-find-restaurants [user]="user" />   
+        <app-find-restaurants [user]="testStudent" />   
     </div>
     <div class="col-6">
         <div class="mt-3">
-            <p class="text-right"><i class="fa-solid fa-user fa-lg"></i> Logged in as: <b>{{ user.userName }}</b></p>
+            <p class="text-right"><i class="fa-solid fa-user fa-lg"></i> Logged in as: <b>{{ testStudent.userName }}</b></p>
+            <a href="/login" class="btn btn-primary mb-1">Login as a Restaurant</a>
         </div>
         <app-my-orders [lastOrderId]="lastOrderId" />
     </div>

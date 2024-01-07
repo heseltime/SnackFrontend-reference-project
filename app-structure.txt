@@ -10,12 +10,15 @@ src
 ||||-- home <------------------- *route: /manage --------------------- restaurant view: authentication required
 ||||  |-- incoming-orders
 ||||  |-- my-restaurant with menu upload, and delivery condition/other info editing
+|  |-- login
 |  |-- page-not-found
 |  |-- shared
 |  |  |-- discover-restaurants.service.ts
 |  |  |-- discover-restaurants.model.ts?
 |  |  |-- discover-menus.model.ts?
 |  |  |-- discover-... .model.ts? - all the models in the end
+|  |  |-- manage-restaurant.service.ts
+|  |  |-- theme.service.ts - just for testing
 ||||-- app.module.ts incl. AuthModule for OpenID Connect/0Auth authentication with Auth0 (Okta - https://auth0.com/)
 |-- styles.css, assets and environments
 |-- index.html

@@ -7,6 +7,9 @@ import { MyOrdersComponent } from './discover-restaurants/my-orders/my-orders.co
 import { RestaurantDetailComponent } from './discover-restaurants/find-restaurants/restaurant-detail/restaurant-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+
+import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {
@@ -29,7 +32,12 @@ const routes: Routes = [
   },
   {
     path: 'manage',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   { path: '**', component: PageNotFoundComponent }
 ];

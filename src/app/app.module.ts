@@ -17,6 +17,7 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { IncomingOrdersComponent } from './home/incoming-orders/incoming-orders.component';
 import { MyRestaurantComponent } from './home/my-restaurant/my-restaurant.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 
 registerLocaleData(localeDEAT);
 
@@ -31,7 +32,8 @@ registerLocaleData(localeDEAT);
     OrderFormComponent,
     IncomingOrdersComponent,
     MyRestaurantComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
