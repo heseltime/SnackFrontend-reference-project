@@ -7,17 +7,15 @@ src
 |  |  |  |-- restaurant-detail
 |  |  |  |  |-- order form
 |  |  |-- my-orders
-|  |-- manage-restaurant
-|  |  |-- incoming orders
-|  |  |-- profile (restaurant) with menu upload
+||||-- home <------------------- *route: /manage --------------------- restaurant view: authentication required
+||||  |-- incoming orders
+||||  |-- profile (restaurant) with menu upload
 |  |-- page-not-found
 |  |-- shared
 |  |  |-- discover-restaurants.service.ts
 |  |  |-- discover-restaurants.model.ts?
 |  |  |-- discover-menus.model.ts?
 |  |  |-- discover-... .model.ts? - all the models in the end
-||||-- OpenID Connect/0Auth for authentication
-||||-- manage-restaurant <------ *route: /manage --------------------- restaurant view with authentication
-|  |-- app.module.ts
+||||-- app.module.ts incl. AuthModule for OpenID Connect/0Auth authentication with Auth0 (Okta - https://auth0.com/)
 |-- styles.css, assets and environments
 |-- index.html

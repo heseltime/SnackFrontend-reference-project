@@ -6,6 +6,7 @@ import { FindRestaurantsComponent } from './discover-restaurants/find-restaurant
 import { MyOrdersComponent } from './discover-restaurants/my-orders/my-orders.component';
 import { RestaurantDetailComponent } from './discover-restaurants/find-restaurants/restaurant-detail/restaurant-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
     path: 'index.html',
     redirectTo: 'restaurants',
     pathMatch: 'full'
+  },
+  {
+    path: 'manage',
+    component: HomeComponent
   },
   { path: '**', component: PageNotFoundComponent }
 ];

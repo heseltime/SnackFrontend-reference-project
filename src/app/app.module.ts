@@ -13,6 +13,7 @@ import { RestaurantDetailComponent } from './discover-restaurants/find-restauran
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { OrderFormComponent } from './discover-restaurants/find-restaurants/restaurant-detail/order-form/order-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from '@auth0/auth0-angular';
 
 registerLocaleData(localeDEAT);
 
@@ -31,7 +32,14 @@ registerLocaleData(localeDEAT);
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AuthModule.forRoot({
+      domain: 'dev-1yjs8ordjywgr6ly.us.auth0.com',
+      clientId: '41burJXSnjlQzz25rYvbAsIuugrDaxFG',
+      authorizationParams: {
+        redirect_uri: window.location.origin + '/manage'
+      }
+    }),
   ],
   providers: [{
       provide: LOCALE_ID,
