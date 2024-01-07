@@ -2,3 +2,4 @@ assumptions (assignment)
 
 - one single student, already logged in, central order management (student perspective)
 - also only orders per session stored: local storage for this (data model not built out to link customers and orders, actually)
+- finally: example Restaurant Burgerei assumed, because no association between manager login and restaurants in back in as per spec.
