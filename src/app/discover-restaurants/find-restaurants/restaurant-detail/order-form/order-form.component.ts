@@ -16,6 +16,7 @@ export class OrderFormComponent {
   returnError: any = null;
 
   @Input() order: DiscoverOrders = {
+    id: 0,
     restaurant: new DiscoverRestaurants(),
     address: new DiscoverAddresses(),
     orderedBy: 0,

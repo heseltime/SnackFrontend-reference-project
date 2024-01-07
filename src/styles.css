@@ -211,3 +211,10 @@
     border-radius: 3px;
     z-index: 1;
   }
+
+  /* helpers */
+
+  .no-border {
+    border: none;
+    background: none;
+  }

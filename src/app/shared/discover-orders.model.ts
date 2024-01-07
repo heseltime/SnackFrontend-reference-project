@@ -12,6 +12,7 @@ export enum DeliveryStatus {
 }
 
 export class DiscoverOrders {
+    id: number;
     restaurant: DiscoverRestaurants;
     address: DiscoverAddresses;
     orderedBy: number;
@@ -23,6 +24,7 @@ export class DiscoverOrders {
     items: DiscoverOrderItems[] = [];
 
     constructor() {
+        this.id = 0; // Default value
         this.restaurant = new DiscoverRestaurants(); // Default value
         this.address = new DiscoverAddresses(); // Default value
         this.orderedBy = 0; // Default value

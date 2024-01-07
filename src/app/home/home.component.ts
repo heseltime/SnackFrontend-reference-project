@@ -51,7 +51,7 @@ export class HomeComponent {
   getOrders(): void {
     this.service.getOrders(this.token).subscribe({
         next: (response) => {
-            console.log('Successfully retrieved orders from backend:', response);
+            //console.log('Successfully retrieved orders from backend:', response);
             // order orders descending by timestamp
             response.sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1);
             this.orders = response;

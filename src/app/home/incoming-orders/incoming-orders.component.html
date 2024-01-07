@@ -5,8 +5,11 @@
         <div class="card-body">
             <h5 class="card-title">You have one new order with Status: <span [ngClass]="getStatusClass(order.status)">{{ order.status }}</span></h5>
             <h6 class="card-subtitle mb-2 text-muted">This order was placed on {{ order.timestamp | date }}</h6>
-            <a href="#" class="card-link">View Order</a>
-            <a href="#" class="card-link">Mark as Done</a>
+            <button (click)="getOrder(order.id)" class="card-link no-border">View Order</button>
+            <button (click)="switchStatus(order.id)" class="card-link no-border">Switch Status <i class="fa-solid fa-circle-arrow-right"></i></button>
+            <ul *ngIf="orderDetail.items && orderDetail.id === order.id">
+                <li *ngFor="let item of orderDetail.items">{{ item.quantity }} {{ item.menu.itemName }}</li>
+            </ul>
         </div>
     </div>
 </div>
