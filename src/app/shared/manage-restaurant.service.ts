@@ -76,4 +76,12 @@ export class ManageRestaurantService {
     });
   }
 
+  removeDeliveryCondition(token: string, condition: DiscoverDeliveryConditions): Observable<any> {
+    return this.http.delete(this.deliveryConditionsUrl + '/' + condition.id, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+  }
+
 }

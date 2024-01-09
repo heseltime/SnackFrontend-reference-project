@@ -14,13 +14,13 @@
         </div>
     </div>
 
-    <h3 class="mt-3">Delivery Rules</h3>
-    <button (click)="checkDeliveryConditions()" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Check</button>
+    <h3 class="mt-3">Delivery Fee Rules</h3>
     <div class="card mt-1 mb-1" *ngFor="let condition of deliveryConditions">
         <div class="card-body">
-            <h5 class="card-title">{{ condition.deliveryCost }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ condition.distance }}</h6>
-            <p class="card-text">{{ condition.minOrderValue }}</p>
+            <h5 class="card-title"><b>Charge</b> {{ condition.deliveryCost }} EUR</h5>
+            <h6 class="card-subtitle mb-2 text-muted">for <b>Distance</b> {{ condition.distance }} km</h6>
+            <p class="card-text">with <b>Min. Order Value</b> {{ condition.minOrderValue }} EUR</p>
+            <button (click)="removeDeliveryCondition(condition)" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Remove</button>
         </div>
     </div>
 </div>

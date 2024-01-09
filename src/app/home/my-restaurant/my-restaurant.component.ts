@@ -76,4 +76,29 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
     console.log(this.deliveryConditions);
   }
 
+  removeDeliveryCondition(condition: DiscoverDeliveryConditions) {
+    this.managementService.removeDeliveryCondition(this.token, condition).subscribe({
+      next: (response) => {
+          //console.log('Successfully removed delivery condition from backend:', response);
+          this.getDeliveryConditions(this.token);
+      },
+      error: (error) => {
+          console.error('Error removing delivery condition from backend:', error);
+      }
+    });
+  }
+
+  getDeliveryConditions(token: string): void {
+    this.managementService.getDeliveryConditions(token).subscribe({
+        next: (response) => {
+            //console.log('Successfully retrieved delivery conditions from backend:', response);
+            this.deliveryConditions = response;
+            console.log(this.deliveryConditions);
+        },
+        error: (error) => {
+            console.error('Error retrieving delivery conditions from backend:', error);
+        }
+    });
+  }
+
 }
