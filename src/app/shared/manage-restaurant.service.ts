@@ -18,6 +18,9 @@ export class ManageRestaurantService {
   ordersUrl:string = environment.apiBaseUrl+'/Business/orders';
   orderStatusUpdateUrl:string = environment.apiBaseUrl+'/Business/orderStatusUpdate';
 
+  menuUrl:string = environment.apiBaseUrl+'/Business/menu';
+  deliveryConditionsUrl:string = environment.apiBaseUrl+'/Business/conditions';
+
   constructor(private http: HttpClient, private router: Router) { }
 
   authenticateBackend(restaurantName: string, apiKey: string): Observable<any> {
@@ -38,6 +41,35 @@ export class ManageRestaurantService {
 
   updateOrderStatus(token: string, orderId: number, newStatus: number): Observable<any> {
     return this.http.post(this.orderStatusUpdateUrl + '/' + orderId, newStatus, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+  }
+
+  /* menus */
+
+  getMenu(token: string): Observable<DiscoverMenus[]> {
+    return this.http.get<DiscoverMenus[]>(this.menuUrl, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+  }
+
+  removeFromMenu(token: string, menuItem: DiscoverMenus): Observable<any> {
+    return this.http.delete(this.menuUrl + '/' + menuItem.id, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+  }
+
+
+  /* delivery conditions */
+
+  getDeliveryConditions(token: string): Observable<DiscoverDeliveryConditions[]> {
+    return this.http.get<DiscoverDeliveryConditions[]>(this.deliveryConditionsUrl, {
       headers: {
         'Authorization': 'Bearer ' + token
       }

@@ -19,8 +19,8 @@
                     <h5 class="card-title">{{ menu.itemName }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ menu.category }}</h6>
                     <p class="card-text">{{ menu.description }}</p>
-                    <button (click)="addToOrder(menu)" [disabled]="!restaurant.deliveryCondition?.deliveryCost" class="btn btn-primary mt-2 mr-1 btn-margin-right"><i class="fa-solid fa-plus fa-lg mouse-hover"></i> Add to Order</button>
-                    <button (click)="removeFromOrder(menu)" [disabled]="!restaurant.deliveryCondition?.deliveryCost" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Remove</button>
+                    <button (click)="addToOrder(menu)" class="btn btn-primary mt-2 mr-1 btn-margin-right"><i class="fa-solid fa-plus fa-lg mouse-hover"></i> Add to Order</button>
+                    <button (click)="removeFromOrder(menu)" class="btn btn-secondary ml-1 mt-2 btn-margin-left"><i class="fa-solid fa-minus fa-lg mouse-hover"></i> Remove</button>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <h4 class="mt-1"><u>{{ calculateTotal() | currency:'€':'symbol':'1.2-2':'de-AT' }}</u></h4>
-                <h5 class="mt-1" *ngIf="restaurant.deliveryCondition ? checkOrderIsPossible(restaurant.deliveryCondition) : false; else noDeliveryCost"><em>includes {{ restaurant.deliveryCondition?.deliveryCost | currency:'€':'symbol':'1.2-2':'de-AT' }} for delivery</em></h5>
+                <h5 class="mt-1"><em>includes {{ restaurant.deliveryCondition?.deliveryCost | currency:'€':'symbol':'1.2-2':'de-AT' }} for delivery</em></h5>
             </div>
         </div>
     </div>

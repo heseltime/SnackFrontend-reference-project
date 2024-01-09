@@ -8,7 +8,7 @@ import { DiscoverUsers } from 'src/app/shared/discover-users.model';
   styleUrls: ['./find-restaurants.component.css']
 })
 export class FindRestaurantsComponent {
-  @Input() user:DiscoverUsers = new DiscoverUsers(0, '', '', '', 0, 0);
+  @Input() user:DiscoverUsers = new DiscoverUsers(0, '', '', '', 48, 14); // plausible geodata for testing
   error = ''; // error message from geolocation
 
   sliderValue: number = 20;

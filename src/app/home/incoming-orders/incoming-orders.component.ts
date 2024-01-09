@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DiscoverMenus } from 'src/app/shared/discover-menus.model';
 import { DeliveryStatus, DiscoverOrders } from 'src/app/shared/discover-orders.model';
 import { DiscoverRestaurantsService } from 'src/app/shared/discover-restaurants.service';
 import { ManageRestaurantService } from 'src/app/shared/manage-restaurant.service';
@@ -50,9 +51,18 @@ export class IncomingOrdersComponent {
   updateStatus(orderId: number, currentStatus: DeliveryStatus): void {
       //console.log('Switching status of order:', orderId);
       let newStatus = DeliveryStatus[currentStatus as unknown as keyof typeof DeliveryStatus] + 1;
+      if (newStatus < 0) {
+        newStatus = 0;
+      }
+
       if (newStatus > 4) {
         newStatus = 4;
       }
+      
+      if (isNaN(newStatus)) {
+        newStatus = 1;
+      }
+      //console.log(newStatus);
       this.managementService.updateOrderStatus(this.token, orderId, newStatus).subscribe({
         next: (response) => {
             //console.log('Successfully updated order in backend:', response);
@@ -68,6 +78,14 @@ export class IncomingOrdersComponent {
     //console.log('Switching status of order:', orderId);
     let newStatus = DeliveryStatus[currentStatus as unknown as keyof typeof DeliveryStatus] - 1;
     if (newStatus < 0) {
+      newStatus = 0;
+    }
+
+    if (newStatus > 4) {
+      newStatus = 4;
+    }
+    
+    if (isNaN(newStatus)) {
       newStatus = 0;
     }
     this.managementService.updateOrderStatus(this.token, orderId, newStatus).subscribe({

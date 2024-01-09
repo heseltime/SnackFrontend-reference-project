@@ -9,7 +9,6 @@ import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { catchError, map } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -108,7 +107,11 @@ export class DiscoverRestaurantsService {
   }
 
   submitOrder(order: DiscoverOrders): Observable<any> {
-    return this.http.post(this.orderUrl, order);
+    // destructuring assignment to remove field id
+    const { id, ...orderWithoutId } = order;
+
+    console.log(orderWithoutId);
+    return this.http.post(this.orderUrl, orderWithoutId);
   }
 
   getOrderById(id: string): Observable<DiscoverOrders> {
