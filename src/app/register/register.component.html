@@ -4,12 +4,116 @@
   
   
 <div class="row hero-dark dark mt-2">
-    <div class="col-6">
+    <div class="col-md-8">
         <h3>Restaurant Details</h3>
+        <form [formGroup]="locationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input id="name" type="text" formControlName="name" class="form-control">
+            <div *ngIf="locationForm.get('name')?.invalid && locationForm.get('name')?.touched">
+                <small class="text-danger" *ngIf="locationForm.get('name')?.errors?.['required']">
+                    Name is required.
+                </small>
+            </div>
+        </div>
+        
+        <div formGroupName="newAddress" class="form-group mt-2">
+            <label>Address:</label>
+        
+            <!-- Street Field -->
+            <input type="text" formControlName="street" class="form-control mb-2" placeholder="Street">
+            <div *ngIf="locationForm.get(['newAddress', 'street'])?.invalid && locationForm.get(['newAddress', 'street'])?.touched">
+                <small class="text-danger" *ngIf="locationForm.get(['newAddress', 'street'])?.errors?.['required']">
+                    Street is required.
+                </small>
+            </div>
+        
+            <!-- Postal Code Field -->
+            <input type="text" formControlName="postalCode" class="form-control mb-2" placeholder="Postal Code">
+            <div *ngIf="locationForm.get(['newAddress', 'postalCode'])?.invalid && locationForm.get(['newAddress', 'postalCode'])?.touched">
+                <small class="text-danger" *ngIf="locationForm.get(['newAddress', 'postalCode'])?.errors?.['required']">
+                    Postal code is required.
+                </small>
+            </div>
+        
+            <!-- City Field -->
+            <input type="text" formControlName="city" class="form-control mb-2" placeholder="City">
+            <div *ngIf="locationForm.get(['newAddress', 'city'])?.invalid && locationForm.get(['newAddress', 'city'])?.touched">
+                <small class="text-danger" *ngIf="locationForm.get(['newAddress', 'city'])?.errors?.['required']">
+                    City is required.
+                </small>
+            </div>
+        
+            <!-- State Field -->
+            <input type="text" formControlName="state" class="form-control mb-2" placeholder="State">
+            <div *ngIf="locationForm.get(['newAddress', 'state'])?.invalid && locationForm.get(['newAddress', 'state'])?.touched">
+                <small class="text-danger" *ngIf="locationForm.get(['newAddress', 'state'])?.errors?.['required']">
+                    State is required.
+                </small>
+            </div>
+        
+            <!-- Country Field -->
+            <input type="text" formControlName="country" class="form-control" placeholder="Country">
+            <div *ngIf="locationForm.get(['newAddress', 'country'])?.invalid && locationForm.get(['newAddress', 'country'])?.touched">
+                <small class="text-danger" *ngIf="locationForm.get(['newAddress', 'country'])?.errors?.['required']">
+                    Country is required.
+                </small>
+            </div>
+        </div>
+        
+        
+        <!--<div class="form-group">
+            <label for="gpsLat">GPS Latitude:</label>
+            <input id="gpsLat" type="number" formControlName="gpsLat" class="form-control">
+        </div>
+        
+        <div class="form-group">
+            <label for="gpsLong">GPS Longitude:</label>
+            <input id="gpsLong" type="number" formControlName="gpsLong" class="form-control">
+        </div>-->
+        
+        <div class="form-group mt-2">
+            <label for="webHookUrl">Web Hook URL:</label>
+            <input id="webHookUrl" type="text" formControlName="webHookUrl" class="form-control">
+            <div *ngIf="locationForm.get('webHookUrl')?.invalid && locationForm.get('webHookUrl')?.touched">
+                <small class="text-danger" *ngIf="locationForm.get('webHookUrl')?.errors?.['required']">
+                    Web Hook URL is required.
+                </small>
+                <small class="text-danger" *ngIf="locationForm.get('webHookUrl')?.errors?.['pattern']">
+                    Please enter a valid URL.
+                </small>
+            </div>
+        </div>
+        
+        
+        <div class="form-group mt-2">
+            <label for="titleImage">Title Image:</label>
+            <input id="titleImage" type="file" (change)="onImagePicked($event)" class="form-control-file">
+            <div *ngIf="locationForm.get('titleImage')?.invalid && locationForm.get('titleImage')?.touched">
+                <small class="text-danger" *ngIf="locationForm.get('titleImage')?.errors?.['required']">
+                    A title image is required.
+                </small>
+            </div>
+        </div>
+        
+        
+        <button type="submit" class="btn btn-primary mt-2 mb-3">Submit</button>
+        
+        <div *ngIf="registrationResult" class="alert alert-success">
+            {{ registrationResult }}
+        </div>
+
+        <div *ngIf="registrationError" class="alert alert-danger">
+            {{ registrationError.error }}
+        </div>
+
+    </form>     
     </div>
-    <div class="col-6">
+    <div class="col-md-4">
         <h3>Menu</h3>
+        <p>You will add your Menu Items later in your Management Overview.</p>
         <h3>Delivery Rules</h3>
+        <p>You will add your Delivery Rules later in your Management Overview.</p>
     </div>
-    <button class="btn btn-primary mt-5 col-10 offset-1">Register</button>
+    <a href="/" class="btn btn-secondary mt-5 col-md-10 offset-md-1">Back to Home</a>
 </div>

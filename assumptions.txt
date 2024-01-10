@@ -5,3 +5,5 @@ assumptions (assignment)
 - also only orders per session stored: local storage for this (data model not built out to link customers and orders, actually)
 - finally: example Restaurant Burgerei assumed, because no association between manager login and restaurants in back in as per spec.
     See testRestaurant and testApiKey in home.component.ts (testRestaurant also in login.component.ts)
+- no creation of username and pwrd at registration, 
+    also for simplicity at registration current machine's location data is used for restaurant

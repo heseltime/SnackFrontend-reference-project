@@ -100,4 +100,31 @@ export class ManageRestaurantService {
     });
   }
 
+  /* location service test */
+  getLocationObservable(): Observable<GeolocationPosition> {
+    return new Observable(observer => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            observer.next(position);
+            observer.complete();
+          },
+          (error) => {
+            observer.error(error);
+          }
+        );
+      } else {
+        observer.error(new Error('Geolocation is not supported by this browser.'));
+      }
+    });
+  }
+
+
+  /* registration */
+  registerRestaurant(restaurant: any): Observable<any> {
+    //console.log(restaurant);
+    return this.http.post(environment.apiBaseUrl+'/BusinessRegistration', restaurant);
+  }
+
+
 }
