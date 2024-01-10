@@ -137,10 +137,24 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
   min = 10;
 
   onSubmitRule() {
-    // Code to handle the submission, e.g., sending the data to a server
-    this.charge = 0;
-    this.distance = 0;
-    this.min = 0;
+    let newCondition = new DiscoverDeliveryConditions(0, this.restaurantId, this.charge, this.distance, this.min); // id is ignored by backend
+
+    //console.log(newCondition);
+
+    this.managementService.addDeliveryCondition(this.token, newCondition).subscribe({
+      next: (response) => {
+          //console.log('Successfully added delivery condition to backend:', response);
+          this.getDeliveryConditions(this.token);
+
+          this.charge = 0;
+          this.distance = 0;
+          this.min = 0;
+      },
+      error: (error) => {
+          console.error('Error adding delivery condition to backend:', error);
+          this.returnErrorDeliveryCondition = error;
+      }
+    });
   }
 
   name = '';
