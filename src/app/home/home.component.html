@@ -15,7 +15,7 @@
           Logged in as {{ user.name }} ({{ user.email }}) in Management View <b>(<em>{{ testRestaurant }}</em> example</b>)
         </p>
       </div> 
-      <app-my-restaurant [token]="token" [menu]="menu" [deliveryConditions]="deliveryConditions"></app-my-restaurant>
+      <app-my-restaurant [token]="token" [menu]="menu" [deliveryConditions]="deliveryConditions" [restaurantId]="testRestaurantId"></app-my-restaurant>
   </div>
   <a href="/" class="btn btn-secondary mt-5 col-10 offset-1">Back to Restaurants Overview</a>
 </div>

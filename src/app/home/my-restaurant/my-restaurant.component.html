@@ -2,9 +2,6 @@
 
 <div class="col-10 mr-3">
     <h3 class="mt-3">Menu</h3>
-    <div class="alert alert-danger" role="alert" *ngIf="returnError">
-        {{ returnError.error.title }}
-    </div>
     <div class="card mt-1 mb-1" *ngFor="let menuItem of menu">
         <div class="card-body">
             <h5 class="card-title">{{ menuItem.itemName }}</h5>
@@ -24,9 +21,14 @@
                     <input type="text" class="form-control" id="type" [(ngModel)]="type" name="type" placeholder="Starters">
                     <label class="mt-2" for="description"><b>Description</b></label>
                     <input type="text" class="form-control" id="description" [(ngModel)]="description" name="description" placeholder="">
+                    <label class="mt-2" for="price"><b>Price (EUR)</b></label>
+                    <input type="text" class="form-control" id="price" [(ngModel)]="price" name="price" placeholder="10">
                 </div>
                 <button type="submit" class="btn btn-primary ml-1 mt-2"><i class="fa-solid fa-plus fa-lg mouse-hover"></i> Add Item</button>
             </form>
+            <div class="alert alert-danger" role="alert" *ngIf="returnErrorMenuItem">
+                {{ returnErrorMenuItem.error.title }}
+            </div>
         </div>
     </div>
     

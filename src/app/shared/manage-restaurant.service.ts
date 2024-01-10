@@ -66,7 +66,7 @@ export class ManageRestaurantService {
   }
 
   addToMenu(token: string, menuItem: DiscoverMenus): Observable<any> {
-    return this.http.post(this.deliveryConditionsUrl, menuItem, {
+    return this.http.post(this.menuUrl, menuItem, {
       headers: {
         'Authorization': 'Bearer ' + token
       }

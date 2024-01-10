@@ -14,6 +14,7 @@ import { DiscoverDeliveryConditions } from '../shared/discover-delivery-conditio
 export class HomeComponent {
 
   testRestaurant:string = 'Burgerei';
+  testRestaurantId:number = 1;
   testApiKey:string = 'APIBurger123';
 
   // backend authentication response

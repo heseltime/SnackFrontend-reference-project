@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@
 import { DiscoverDeliveryConditions } from 'src/app/shared/discover-delivery-conditions.model';
 import { DiscoverMenus } from 'src/app/shared/discover-menus.model';
 import { ManageRestaurantService } from 'src/app/shared/manage-restaurant.service';
-import { AddRuleModalComponent } from './add-rule-modal/add-rule-modal.component';
 
 @Component({
   selector: 'app-my-restaurant',
@@ -32,7 +31,10 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
 
   @Input() token: string = ''; // authentication token
 
-  returnError: any = null;
+  @Input() restaurantId: number = 0;
+
+  returnErrorMenuItem: any = null;
+  returnErrorDeliveryCondition: any = null;
 
 
   getMenu(token: string): void {
@@ -69,7 +71,7 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
       },
       error: (error) => {
           //console.error('Error removing menu item from backend:', error);
-          this.returnError = error;
+          this.returnErrorMenuItem = error;
       }
     });
   }
@@ -83,7 +85,7 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
       },
       error: (error) => {
           //console.error('Error adding menu item to backend:', error);
-          this.returnError = error;
+          this.returnErrorMenuItem = error;
       }
     });
   }
@@ -145,11 +147,27 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
   type = 'Starters';
   description = '';
 
+  price = 0;
+
   onSubmitMenuItem() {
-    // Code to handle the submission, e.g., sending the data to a server
-    this.name = '';
-    this.type = '';
-    this.description = '';
+    let newItem = new DiscoverMenus(0, this.restaurantId, this.type, this.name, this.description, this.price); // id is ignored by backend
+
+    //console.log(newItem);
+
+    this.managementService.addToMenu(this.token, newItem).subscribe({
+      next: (response) => {
+          //console.log('Successfully added menu item to backend:', response);
+          this.getMenu(this.token);
+
+          this.name = '';
+          this.type = '';
+          this.description = '';
+      },
+      error: (error) => {
+          console.error('Error adding menu item to backend:', error);
+          this.returnErrorMenuItem = error;
+      }
+    });
   }
 
 }
