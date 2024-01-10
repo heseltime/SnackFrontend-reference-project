@@ -99,7 +99,7 @@ export class HomeComponent {
         next: (response) => {
             //console.log('Successfully retrieved delivery conditions from backend:', response);
             this.deliveryConditions = response;
-            console.log(this.deliveryConditions);
+            //console.log(this.deliveryConditions);
         },
         error: (error) => {
             console.error('Error retrieving delivery conditions from backend:', error);

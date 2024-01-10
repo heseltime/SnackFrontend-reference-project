@@ -18,6 +18,8 @@ import { IncomingOrdersComponent } from './home/incoming-orders/incoming-orders.
 import { MyRestaurantComponent } from './home/my-restaurant/my-restaurant.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { AddRuleModalComponent } from './home/my-restaurant/add-rule-modal/add-rule-modal.component';
+import { AddMenuItemModalComponent } from './home/my-restaurant/add-menu-item-modal/add-menu-item-modal.component';
 
 registerLocaleData(localeDEAT);
 
@@ -33,7 +35,9 @@ registerLocaleData(localeDEAT);
     IncomingOrdersComponent,
     MyRestaurantComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    AddRuleModalComponent,
+    AddMenuItemModalComponent
   ],
   imports: [
     BrowserModule,

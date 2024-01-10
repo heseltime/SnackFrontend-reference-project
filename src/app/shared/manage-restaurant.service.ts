@@ -65,6 +65,14 @@ export class ManageRestaurantService {
     });
   }
 
+  addToMenu(token: string, menuItem: DiscoverMenus): Observable<any> {
+    return this.http.post(this.deliveryConditionsUrl, menuItem, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+  }
+
 
   /* delivery conditions */
 
@@ -78,6 +86,14 @@ export class ManageRestaurantService {
 
   removeDeliveryCondition(token: string, condition: DiscoverDeliveryConditions): Observable<any> {
     return this.http.delete(this.deliveryConditionsUrl + '/' + condition.id, {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+  }
+
+  addDeliveryCondition(token: string, condition: DiscoverDeliveryConditions): Observable<any> {
+    return this.http.post(this.deliveryConditionsUrl, condition, {
       headers: {
         'Authorization': 'Bearer ' + token
       }

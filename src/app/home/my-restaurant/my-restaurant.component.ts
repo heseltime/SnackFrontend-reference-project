@@ -1,7 +1,8 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { DiscoverDeliveryConditions } from 'src/app/shared/discover-delivery-conditions.model';
 import { DiscoverMenus } from 'src/app/shared/discover-menus.model';
 import { ManageRestaurantService } from 'src/app/shared/manage-restaurant.service';
+import { AddRuleModalComponent } from './add-rule-modal/add-rule-modal.component';
 
 @Component({
   selector: 'app-my-restaurant',
@@ -32,6 +33,7 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
   @Input() token: string = ''; // authentication token
 
   returnError: any = null;
+
 
   getMenu(token: string): void {
     this.managementService.getMenu(token).subscribe({
@@ -72,6 +74,21 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
     });
   }
 
+  addToMenu(menuItem: DiscoverMenus): void {
+    //console.log('Adding menu item:', menuItem);
+    this.managementService.addToMenu(this.token, menuItem).subscribe({
+      next: (response) => {
+          //console.log('Successfully added menu item to backend:', response);
+          this.getMenu(this.token);
+      },
+      error: (error) => {
+          //console.error('Error adding menu item to backend:', error);
+          this.returnError = error;
+      }
+    });
+  }
+
+
   checkDeliveryConditions(): void {
     console.log(this.deliveryConditions);
   }
@@ -93,12 +110,46 @@ export class MyRestaurantComponent implements OnChanges, OnInit {
         next: (response) => {
             //console.log('Successfully retrieved delivery conditions from backend:', response);
             this.deliveryConditions = response;
-            console.log(this.deliveryConditions);
+            //console.log(this.deliveryConditions);
         },
         error: (error) => {
             console.error('Error retrieving delivery conditions from backend:', error);
         }
     });
+  }
+
+  addDeliveryCondition(condition: DiscoverDeliveryConditions): void {
+    this.managementService.addDeliveryCondition(this.token, condition).subscribe({
+      next: (response) => {
+          //console.log('Successfully added delivery condition to backend:', response);
+          this.getDeliveryConditions(this.token);
+      },
+      error: (error) => {
+          console.error('Error adding delivery condition to backend:', error);
+      }
+    });
+  }
+
+  charge = 10;
+  distance = 10;
+  min = 10;
+
+  onSubmitRule() {
+    // Code to handle the submission, e.g., sending the data to a server
+    this.charge = 0;
+    this.distance = 0;
+    this.min = 0;
+  }
+
+  name = '';
+  type = 'Starters';
+  description = '';
+
+  onSubmitMenuItem() {
+    // Code to handle the submission, e.g., sending the data to a server
+    this.name = '';
+    this.type = '';
+    this.description = '';
   }
 
 }
