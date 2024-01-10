@@ -40,3 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# project export
+/dist
+dist_s2110307016.zip
