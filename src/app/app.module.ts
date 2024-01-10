@@ -18,6 +18,7 @@ import { IncomingOrdersComponent } from './home/incoming-orders/incoming-orders.
 import { MyRestaurantComponent } from './home/my-restaurant/my-restaurant.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 registerLocaleData(localeDEAT);
 
@@ -34,6 +35,7 @@ registerLocaleData(localeDEAT);
     MyRestaurantComponent,
     HomeComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

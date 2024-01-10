@@ -11,6 +11,7 @@ src
 ||||  |-- incoming-orders
 ||||  |-- my-restaurant with menu upload, and delivery condition/other info editing
 |  |-- login
+|  |-- register
 |  |-- page-not-found
 |  |-- shared
 |  |  |-- discover-restaurants.service.ts

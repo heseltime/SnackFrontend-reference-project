@@ -1,11 +1,11 @@
-<div class="row hero dark mt-2">
+<div class="row hero dark mt-2" *ngIf="backendConnection; else connectionIssue">
   <div *ngIf="auth.isAuthenticated$ | async">
     <button class="btn btn-danger mt-2 mb-1" (click)="logout()">Log out</button>
   </div>
 </div>
 
 
-<div class="row hero-dark dark mt-2" *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+<div class="row hero-dark dark mt-2" *ngIf="(auth.isAuthenticated$ | async) && backendConnection; else loggedOut">
   <div class="col-6">
       <app-incoming-orders [orders]="orders" [token]="token"></app-incoming-orders>
   </div>
@@ -23,5 +23,12 @@
 <ng-template #loggedOut>
   <div class="row hero-dark dark mt-2">
     <p>Please log in for the Management View</p>
+    <a href="/login" class="btn btn-primary mt-1 col-10 offset-1">Go to Login</a>
+  </div>
+</ng-template>
+
+<ng-template #connectionIssue>
+  <div class="row hero-dark dark mt-2">
+    <p>There is a connection issue with the backend. Please try again later.</p>
   </div>
 </ng-template>

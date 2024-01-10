@@ -19,6 +19,7 @@ export class HomeComponent {
 
   // backend authentication response
   token: string = '';
+  backendConnection: boolean = true;
 
   // backend requests
   @Output() orders: DiscoverOrders[] = [];
@@ -52,6 +53,7 @@ export class HomeComponent {
         },
         error: (error) => {
             console.error('Error authenticating to backend:', error);
+            this.backendConnection = false;
         }
     });
   }
