@@ -12,6 +12,7 @@ export class MyOrdersComponent {
   @Input() lastOrderId: string | null = null;
 
   lastOrder: DiscoverOrders = new DiscoverOrders();
+  orderFound = false;
 
   constructor(public service: DiscoverRestaurantsService) { }
 
@@ -19,13 +20,14 @@ export class MyOrdersComponent {
     this.lastOrderId = localStorage.getItem('lastOrderId');
     if (this.lastOrderId) {
       this.service.getOrderById(this.lastOrderId).subscribe({
-        next: (data) => {
-            this.lastOrder = data;
-        },
-        error: (error) => {
-            console.error('Error fetching order:', error);
-        }
-    });
+            next: (data) => {
+                this.lastOrder = data;
+                this.orderFound = true;
+            },
+            error: (error) => {
+                console.error('Error fetching order:', error);
+            }
+        });
     }
   }
 

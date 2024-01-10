@@ -1,4 +1,4 @@
-<div class="col-12 ml-3">
+<div class="col-12 ml-3" *ngIf="orderFound">
     <h3 class="mt-1">Current Order</h3>
     <h4>Status: <span [ngClass]="getStatusClass(lastOrder.status)">{{ lastOrder.status }}</span></h4>
     <div class="sticky-container">
