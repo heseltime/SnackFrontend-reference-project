@@ -2,6 +2,7 @@
 
 ## Structure
 
+```
 src
 |-- app
 |  |-- discover-restaurants <--- *route: /restaurants ---------------- user view of this app, main part: see assumptions.txt
@@ -25,6 +26,7 @@ src
 ||||-- app.module.ts incl. AuthModule for OpenID Connect/0Auth authentication with Auth0 (Okta - https://auth0.com/)
 |-- styles.css, assets and environments
 |-- index.html
+```
 
 ## High-level Overview with Screenshots
 
