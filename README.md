@@ -1,5 +1,7 @@
 # SnackFrontend (Project Description)
 
+Best formatting with screenshots: https://github.com/heseltime/SnackFrontend-reference-project/blob/main/README.md
+
 ## Structure
 
 ```
